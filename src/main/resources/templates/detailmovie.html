@@ -14,16 +14,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <title>SceneIt</title>
   <style>
-      header{
+      body{
           background: url('../img/movie-theater.jpg');
-          background-size:cover;
+          /*background-size:cover;
           background-position: center;
-          min-height: 1000px;
+          min-height: 1000px;*/
       }
 
       .section{
-          padding-top:4vw;
-          padding-bottom:4vw;   
+          background-color:white;
+          padding:0vw;
+
+      }
+
+      img{
+        padding: 0;
       }
 
       .tabs .indicator{
@@ -82,20 +87,18 @@
             </div>
             <div class="col s12 l6 offset-l1">
                 <h2 th:text="${movie.title}">Der Pate</h2>
-                <p th:text="${movie.originalTitle}"><b>Originaltitel:hard The Godfather</b></p>
-                <p th:text="${movie.year}">Erscheinungsjahr:hard 1972</p>
-                <p th:text="${movie.age}">Altersfreigabe: hard 16</p>
+                <p th:text="'Originaltitel: '+${movie.originalTitle}"><b>Originaltitel:hard The Godfather</b></p>
+                <p th:text="'Jahr: '+${movie.year}">Erscheinungsjahr:hard 1972</p>
+                <p th:text="'FSK: '+${movie.age}">Altersfreigabe: hard 16</p>
                 <p th:text="'Länge: '+${movie.lengthInMinutes/60}+' Std. '+ ${movie.lengthInMinutes%60}+' Min.'">Länge: hard 2 Std. 55 Min.</p>
-             <!--   <p th:text="${movie.genres}">Genre: hard Krimi, Drama</p>
-                <p th:text="${movie.directors}">Regie: hard Francis Ford Coppola</p>
-                <p th:text="${movie.authors}">Drehbuch: hard Mario Puzo, Franzis Ford Coppola</p>
-                <p th:text="${movie.actors}">Hauptbesetzung:hard Marlon Brando, Al Pacino, James Caan</p> -->
+
+                <p>Genre: <span th:each="genre, iStat : ${movie.genres}"><span th:text="${genre.name}"></span><span th:text="${iStat.last}? '' : ', '"></span></span></p>
+                <p>Regie: <span th:each="director, iStat : ${movie.directors}"><span th:text="${director.name}"></span><span th:text="${iStat.last}? '' : ', '"></span></span></p>
+                <p>Drehbuch: <span th:each="author, iStat : ${movie.authors}"><span th:text="${author.name}"></span><span th:text="${iStat.last}? '' : ', '"></span></span></p>
+                <p>Hauptbesetzung: <span th:each="actor, iStat : ${movie.actors}"><span th:text="${actor.name}"></span><span th:text="${iStat.last}? '' : ', '"></span></span></p>
                 <p th:text="${movie.plot}">hard Der alternde Patriarch einer Verbrecherdynastie will die Herrschaft über sein geheimes Reich auf seinen widerwilligen Sohn übertragen.</p>
             </div>
 
-            <div th:each=" actor: ${movie.actors}">
-                <div th:text="${actor.name}"></div>
-            </div>
         </div>           
         
     </section>
