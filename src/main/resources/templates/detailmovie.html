@@ -85,7 +85,7 @@
                 <p th:text="${movie.originalTitle}"><b>Originaltitel:hard The Godfather</b></p>
                 <p th:text="${movie.year}">Erscheinungsjahr:hard 1972</p>
                 <p th:text="${movie.age}">Altersfreigabe: hard 16</p>
-                <p th:text="${movie.lengthInMinutes+60}">Länge: hard 2 Std. 55 Min.</p>
+                <p th:text="'Länge: '+${movie.lengthInMinutes/60}+' Std. '+ ${movie.lengthInMinutes%60}+' Min.'">Länge: hard 2 Std. 55 Min.</p>
              <!--   <p th:text="${movie.genres}">Genre: hard Krimi, Drama</p>
                 <p th:text="${movie.directors}">Regie: hard Francis Ford Coppola</p>
                 <p th:text="${movie.authors}">Drehbuch: hard Mario Puzo, Franzis Ford Coppola</p>
